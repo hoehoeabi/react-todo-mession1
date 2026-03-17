@@ -8,15 +8,8 @@ export default function TodoList({
 }) {
   return (
     <ul
-      style={{
-        listStyle: "none",
-        padding: 0,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        width: "fit-content",
-        margin: "0 auto",
-      }}
+      className="list-none p-0 m-0 flex flex-col items-start"
+      style={{ listStyleType: "none", padding: 0 }} // 테일윈드 안 먹을 때를 대비한 보험
     >
       {todos.map((todo, index) => (
         <TodoItem
