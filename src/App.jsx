@@ -15,22 +15,23 @@ function App() {
 
   return (
     <div className="p-5 max-w-md mx-auto mt-10">
-      <h1 className="text-3xl font-bold text-center mb-6 text-white">
+      <h1 className="text-3xl font-bold text-center mb-8 text-white">
         내 투두 리스트
       </h1>
 
-      <div className="mb-5 flex gap-2">
+      {/* 사진처럼 입력창과 버튼을 중앙 정렬하고 묶어주는 스타일 적용 */}
+      <div className="mb-8 flex justify-center items-stretch">
         <input
           type="text"
           placeholder="할 일을 입력하세요"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-          className="flex-1 px-3 py-2 text-black rounded outline-none"
+          className="w-56 px-3 py-1 bg-[#3f3f46] text-white border border-[#52525b] outline-none text-sm placeholder-gray-400"
         />
         <button
           onClick={handleAdd}
-          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded font-semibold transition-colors"
+          className="px-4 py-1 bg-[#52525b] hover:bg-[#636370] text-white text-sm border border-l-0 border-[#52525b] transition-colors"
         >
           추가
         </button>

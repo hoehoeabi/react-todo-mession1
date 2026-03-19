@@ -16,57 +16,29 @@ function TodoItem({ todo, index, toggleTodo, deleteTodo, updateTodo }) {
   };
 
   return (
-    <li
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "15px",
-        marginBottom: "12px",
-        width: "100%",
-        textAlign: "left",
-      }}
-    >
+    <li className="flex items-center gap-[15px] mb-[12px] w-full text-left">
       <input
         type="checkbox"
         checked={todo.isDone}
         onChange={() => toggleTodo(todo.id)}
-        style={{
-          width: "18px",
-          height: "18px",
-          cursor: "pointer",
-          flexShrink: 0,
-        }}
+        className="w-[18px] h-[18px] cursor-pointer shrink-0"
       />
 
-      <strong style={{ color: "white", width: "25px", flexShrink: 0 }}>
-        {index + 1}.
-      </strong>
+      <strong className="text-white w-[25px] shrink-0">{index + 1}.</strong>
 
       {isEditing ? (
         // === [수정 모드] ===
-        <div style={{ display: "flex", gap: "8px", flex: 1 }}>
+        <div className="flex gap-[8px] flex-1">
           <input
-            style={{
-              flex: 1,
-              padding: "4px 8px",
-              borderRadius: "4px",
-              border: "none",
-              color: "white",
-            }}
+            className="flex-1 px-2 py-1 rounded border border-gray-500 bg-[#3f3f46] text-white outline-none focus:ring-2 focus:ring-blue-400"
             value={editText}
             onChange={(e) => setEditText(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleUpdate()}
+            autoFocus
           />
           <button
             onClick={handleUpdate}
-            style={{
-              backgroundColor: "#16a34a",
-              color: "white",
-              border: "none",
-              padding: "4px 8px",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
+            className="bg-green-600 text-white border-none px-2 py-1 rounded cursor-pointer text-sm"
           >
             저장
           </button>
@@ -75,42 +47,23 @@ function TodoItem({ todo, index, toggleTodo, deleteTodo, updateTodo }) {
         // === [일반 모드] ===
         <>
           <span
-            style={{
-              flex: 1,
-              fontSize: "18px",
-              textDecoration: todo.isDone ? "line-through" : "none",
-              color: todo.isDone ? "#ef4444" : "white",
-            }}
+            className={`flex-1 text-[18px] ${
+              todo.isDone ? "line-through text-red-500" : "text-white"
+            }`}
           >
             {todo.text}
           </span>
 
-          <div style={{ display: "flex", gap: "5px", flexShrink: 0 }}>
+          <div className="flex gap-[5px] shrink-0">
             <button
               onClick={() => setIsEditing(true)}
-              style={{
-                backgroundColor: "#3f3f46",
-                color: "white",
-                border: "none",
-                padding: "4px 8px",
-                borderRadius: "4px",
-                cursor: "pointer",
-                fontSize: "12px",
-              }}
+              className="bg-zinc-700 text-white border-none px-2 py-1 rounded cursor-pointer text-xs"
             >
               수정
             </button>
             <button
               onClick={() => deleteTodo(todo.id)}
-              style={{
-                backgroundColor: "#991b1b",
-                color: "white",
-                border: "none",
-                padding: "4px 8px",
-                borderRadius: "4px",
-                cursor: "pointer",
-                fontSize: "12px",
-              }}
+              className="bg-red-800 text-white border-none px-2 py-1 rounded cursor-pointer text-xs"
             >
               삭제
             </button>
